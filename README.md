@@ -51,7 +51,7 @@ Play with this demo program like this:
     exit
 
 
-For more information, consult the [bt_studio.py](bt_studio.py] file itself.
+For more information, consult the [bt_studio.py](bt_studio.py) file itself.
     
 ### Copyright
 2019 Sampsa Riikonen
