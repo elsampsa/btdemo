@@ -5,6 +5,7 @@ Very simple python code, for learning bluetooth control by dbus.
 Some preliminaries:
 ```
 sudo apt-get install python3-dbus
+sudo apt install bluez bluez-tools
 systemctl --user start obex
 ```
 
@@ -52,7 +53,14 @@ Play with this demo program like this:
 
 
 For more information, consult the [bt_studio.py](bt_studio.py) file itself.
-    
+
+### Links
+[pygobject and threading](https://wiki.gnome.org/action/show/Projects/PyGObject/Threading?action=show&redirect=PyGObject%2FThreading)
+[dbus-python](https://dbus.freedesktop.org/doc/dbus-python/index.html)
+[notes 1](http://www.onurguzel.com/quick-guide-to-d-bus-with-python/)
+[pygobject](https://pygobject.readthedocs.io/en/latest/getting_started.html)
+
+
 ### Copyright
 2019 Sampsa Riikonen
 

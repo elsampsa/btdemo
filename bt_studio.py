@@ -1,20 +1,46 @@
 """Bt dbus demo studio
 
-He we control bluetooth & send files using dbus
+*** Prerequisites ***
 
-For programmic control, see
+::
+
+    sudo apt-get install python3-dbus bluez-tools
+
+
+*** Programmic control ***
 
 ::
 
     bluetoothctl
+    default-agent
+  
+(you need to enable the agent in order to handle the pairing)
+
+Send file:
+  
+::
+    
     bluetooth-sendto --device=12:34:56:78:9A:BC filename
 
 
-Prerequisites:
+Create a PAN ("personal area network"):
+
+some links:
+
+https://www.linux.com/tutorials/weekend-project-personal-area-networking-bluetooth/
+https://superuser.com/questions/1029484/setting-up-a-bluetooth-pan
+https://unix.stackexchange.com/questions/424122/unable-to-connect-to-pan-bluetooth-access-point
 
 ::
 
-    sudo apt-get install python3-dbus
+    bt-network –d –s nap pan0
+
+(haven't resolved this PAN thing yet..)
+
+
+
+*** Python control with dbus ***
+
 
 In these documents: https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/
 
@@ -205,6 +231,18 @@ class Agent(dbus.service.Object):
     @dbus.service.method("org.bluez.Agent1", in_signature="os", out_signature="") 
     def AuthorizeService(self, device, uuid):
         """This is called several time after pairing
+        
+        ::
+        
+            journalctl -u bluetooth.service
+            
+        revealed this:
+        
+        ::
+        
+            TypeError: AuthorizeService has an empty output signature but did not return None
+        
+        (at some moment I returned True instead of None)
         """
         print("AuthorizeService:", device, uuid)
         # reject like this:
