@@ -352,7 +352,7 @@ def get_devices():
     
     devices_by_adr = {}
     
-    r = re.compile("\/org\/bluez\/hci\d*\/dev\_(.*)")
+    r = re.compile("\/org\/bluez\/hci\d*\/dev\_([^/]*)$")
     # e.g., match a string like this:
     # /org/bluez/hci0/dev_58_C9_35_2F_A1_EF
     
